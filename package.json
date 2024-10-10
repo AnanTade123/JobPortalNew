@@ -14,8 +14,12 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
+<<<<<<< HEAD
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1"
+=======
+    "typeface-gorditas": "^1.1.13"
+>>>>>>> 9d3e022ad6f0b206a318c56467abd6efa4b5480a
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
