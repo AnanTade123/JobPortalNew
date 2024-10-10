@@ -1,3 +1,19 @@
+//import Cookies from "./components/Cookies"
+
+
+
+import CollaborationSection from "./components/homePage/CollaborationSection"
+import Footer from "./components/homePage/Footer"
+import HeroSection from "./components/homePage/HeroSection"
+import HeroSection2 from "./components/homePage/HeroSection2"
+import Home from "./components/homePage/Home"
+import JobList from "./components/homePage/JobList"
+import Navbar from "./components/homePage/Navbar"
+import TestimonialSlider from "./components/homePage/TestimonialSlider"
+//import WhyChooseUs from "./components/homePage/WhyChooseUs"
+
+
+
 
 
 function App() {
@@ -5,7 +21,16 @@ function App() {
 
   return (
     <>
-     <p>Hello</p>
+     {/*<Cookies/>*/}
+     <Navbar/>
+     <HeroSection/>
+     <Home/>
+     <JobList/>
+     {/*<WhyChooseUs/>*/}
+     <TestimonialSlider/>
+     <CollaborationSection/>
+     <HeroSection2/>
+     <Footer/>
     </>
   )
 }
