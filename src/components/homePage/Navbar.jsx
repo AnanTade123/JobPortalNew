@@ -25,7 +25,7 @@ function Navbar() {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button className="lg:hidden bg-green-500 text-gray-800" onClick={toggleMenu}>
+        <button className="lg:hidden bg-[#255741] text-gray-800 border-gray-400" onClick={toggleMenu}>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}></path>
           </svg>
@@ -34,12 +34,12 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-customGreen shadow-md w-1/2">
+        <div className="lg:hidden bg-[#255741] shadow-md w-1/2">
           <nav className="p-4 space-y-2 text-gray-800">
-            <a href="#" className="hover:text-green-500">Home</a><br />
-            <a href="#" className="hover:text-green-500">Job</a><br />
-            <a href="#contact" className="hover:text-green-500">Contact</a><br />
-            <a href="#" className="hover:text-green-500">Dashboard</a>
+            <a href="#" className="hover:text-green-500 text-black">Home</a><br />
+            <a href="#" className="hover:text-green-500  text-black">Job</a><br />
+            <a href="#contact" className="hover:text-green-500  text-black">Contact</a><br />
+            <a href="#" className="hover:text-green-500  text-black">Dashboard</a>
           </nav>
           <div className="p-1 space-y-2">
             <button className="w-36 border border-gray-800 px-4 py-2 rounded hover:bg-green-500">Login/Sign up</button><br />

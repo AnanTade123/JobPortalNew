@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //import Cookies from "./components/Cookies"
 
 
@@ -15,20 +15,20 @@ import TestimonialSlider from "./components/homePage/TestimonialSlider"
 
 
 
-=======
+
 //import Contactus from "./Components/Contactus"
 
 //import Header from './components/Joblisting/Header';
 //import Maincontent from './components/Joblisting/Maincontent';
-import Signin from './components/Joblisting/Signin';
->>>>>>> 9d3e022ad6f0b206a318c56467abd6efa4b5480a
+//import Signin from './components/Joblisting/Signin';
+
 
 
 function App() {
  
 
   return (
-<<<<<<< HEAD
+
     <>
      {/*<Cookies/>*/}
      <Navbar/>
@@ -40,15 +40,9 @@ function App() {
      <CollaborationSection/>
      <HeroSection2/>
      <Footer/>
-    </>
-=======
-    <div className='app'>
-      {/* <Contactus/>  */}
-      {/* <Header/>  */}
-     {/* <Maincontent/> */}
-     <Signin/>
-     </div>
->>>>>>> 9d3e022ad6f0b206a318c56467abd6efa4b5480a
+    
+   
+     </>
   )
 }
 

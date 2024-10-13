@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 
 const HeroSection2 = () => {
   return (
@@ -6,7 +6,7 @@ const HeroSection2 = () => {
       {/* Hero Section */}
       <section
         className="relative bg-cover bg-center h-[60vh] flex items-center"
-        style={{ backgroundImage: 'url(src/assets/images/img_40.332e3f70.jpg)' }} // Ensure the image path is correct
+        style={{ backgroundImage: 'url(src/assets/images/img_40.332e3f70.jpg)' }} 
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>

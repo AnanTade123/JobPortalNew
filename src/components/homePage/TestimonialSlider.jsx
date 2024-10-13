@@ -56,7 +56,7 @@ const TestimonialSlider = () => {
         }}
       >
         {/* Overlay for better text visibility */}
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <div className="absolute h-screen w-screen mt-[65px] inset-0 bg-black bg-opacity-40"></div>
 
         {/* Header with arrows after the heading */}
         <div className="flex justify-center items-center mb-10 relative z-10">

@@ -2,7 +2,7 @@ import { FaWhatsapp, FaGoogle, FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-customGreen text-white py-8">
+    <footer className="bg-[#255741] text-white py-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 px-4">
         {/* Logo Section */}
         <div className="mb-6 md:mb-0">
@@ -74,7 +74,7 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Enter your email*"
-              className="p-2 border border-gray-300 rounded-l-md focus:outline-none w-full"
+              className="p-2 border border-gray-300 rounded-l-md focus:outline-none w-full sm:w-1/2 md:w-1/2 "
             />
             <button
               type="submit"
