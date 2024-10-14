@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { useState } from "react";
 import { FaBookmark } from "react-icons/fa";
 import imgs from "../../assets/Images/media_22.png";
 import img1 from "../../assets/Images/media_23.png";
@@ -10,260 +11,355 @@ import img6 from "../../assets/Images/media_34.png";
 import img7 from "../../assets/Images/media_35.png";
 
 export default function Maincontent() {
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  const toggleTagSelection = (tag) => {
+    const isSelected = selectedTags.includes(tag);
+    const newTags = isSelected
+      ? selectedTags.filter((t) => t !== tag)
+      : [...selectedTags, tag];
+
+    setSelectedTags(newTags);
+    console.log("Selected Tags:", newTags); // Log selected tags in array format
+  };
+
+  // State for each filter
+  const [location, setLocation] = useState("");
+  const [jobType, setJobType] = useState([]);
+  const [experience, setExperience] = useState([]);
+  const [salary, setSalary] = useState(3500);
+  const [category, setCategory] = useState([]);
+  const [tags, setTags] = useState([]);
+
+  const [showLocation, setShowLocation] = useState(false);
+  const [showJobType, setShowJobType] = useState(false);
+  const [showExperience, setShowExperience] = useState(false);
+  const [showSalary, setShowSalary] = useState(false);
+  const [showCategory, setShowCategory] = useState(false);
+  const [showTags, setShowTags] = useState(false);
+  const [showFilters, setShowFilters] = useState(false); 
+
+  // Function to handle filter application
+  const applyFilters = () => {
+    const filters = {
+      location,
+      jobType,
+      experience,
+      salary,
+      category,
+      tags,
+    };
+    console.log("Applied Filters:", filters);
+  };
+
+  // Function to handle reset
+  const handleReset = () => {
+    setLocation("");
+    setJobType([]);
+    setExperience([]);
+    setSalary(3500);
+    setCategory([]);
+    setTags([]);
+    console.log("Filters Reset");
+  };
+
+  // Helper function to toggle checkbox selections
+  const toggleSelection = (setState, state, value) => {
+    setState((prevState) =>
+      prevState.includes(value)
+        ? prevState.filter((item) => item !== value)
+        : [...prevState, value]
+    );
+  };
   return (
     <>
       <div className="flex flex-col md:flex-row p-8 space-y-8 md:space-x-8 md:space-y-0">
         {/* Left Sidebar: Filter Section */}
         <div className="w-full md:w-1/3 bg-green-50 p-4 md:p-6 rounded-lg">
-          <h3 className="text-xl md:text-2xl font-semibold mb-4">Filter By</h3>
+  <h3 className="text-xl md:text-2xl font-semibold mb-4">Filter By</h3>
 
-          {/* Location Filter */}
-          <div className="mb-4 md:mb-6">
-            <div className="flex justify-between items-center mb-2">
-              <label className="text-lg font-semibold">Location</label>
-              <button className="text-green-500">-</button>
-            </div>
-            <select className="w-full p-2 border border-gray-300 rounded-lg bg-white">
-              <option>Spain, Barcelona</option>
-              <option>USA, New York</option>
-              <option>USA, Alaska</option>
-              <option>USA, California</option>
-              <option>UK, London</option>
-              <option>USA, Mountain View</option>
-              <option>Germany, Berlin</option>
-              <option>USA, Cupertino</option>
-              <option>USA, Menlo Park</option>
-              <option>UK, Cupertino</option>
-              <option>USA, San Jose</option>
-              <option>USA, New York</option>
-              <option>USA, Palo Alto</option>
-            </select>
-          </div>
+  {/* Dropdown Button for Small and Medium Screens */}
+  <button
+    className="md:hidden bg-green-500 text-white py-2 px-4 rounded-lg mb-4 w-full text-center"
+    onClick={() => setShowFilters(!showFilters)}
+  >
+    {showFilters ? "Hide Filters" : "Show Filters"}
+  </button>
 
-          {/* Job Type Filter */}
-          <div className="mb-4 md:mb-6">
-            <div className="flex justify-between items-center mb-2">
-              <label className="text-lg font-semibold">Job Type</label>
-              <button className="text-green-500">-</button>
-            </div>
-            <ul>
-              <li className="flex justify-between items-center mb-2">
-                <label className="flex items-center space-x-2">
-                  <input type="checkbox" />
-                  <span>Fulltime</span>
-                </label>
-                <span>12</span>
-              </li>
-              <li className="flex justify-between items-center mb-2">
-                <label className="flex items-center space-x-2">
-                  <input type="checkbox" />
-                  <span>Part time</span>
-                </label>
-                <span>8</span>
-              </li>
-              <li className="flex justify-between items-center mb-2">
-                <label className="flex items-center space-x-2">
-                  <input type="checkbox" />
-                  <span>Fixed-Price</span>
-                </label>
-                <span>4</span>
-              </li>
-              <li className="flex justify-between items-center mb-2">
-                <label className="flex items-center space-x-2">
-                  <input type="checkbox" />
-                  <span>Freelance</span>
-                </label>
-                <span>4</span>
-              </li>
-            </ul>
-          </div>
+  {/* Filter Options */}
+  <div className={`${showFilters ? "block" : "hidden"} md:block`}>
+    {/* Location Filter */}
+    <div className="mb-4 md:mb-6">
+      <div className="flex justify-between items-center mb-2">
+        <label className="text-lg font-semibold">Location</label>
+        <button
+          className="text-green-500"
+          onClick={() => {
+            setShowLocation(!showLocation);
+            console.log("Location filter toggled:", showLocation);
+          }}
+        >
+          {showLocation ? "−" : "+"}
+        </button>
+      </div>
+      {showLocation && (
+        <select
+          className="w-full p-2 border border-gray-300 rounded-lg bg-white"
+          value={location}
+          onChange={(e) => {
+            setLocation(e.target.value);
+            console.log("Selected Location:", e.target.value);
+          }}
+        >
+          <option value="">Select Location</option>
+          <option>Spain, Barcelona</option>
+          <option>USA, New York</option>
+          <option>USA, Alaska</option>
+          <option>USA, California</option>
+          <option>UK, London</option>
+          <option>USA, Mountain View</option>
+          <option>Germany, Berlin</option>
+        </select>
+      )}
+    </div>
 
-         {/*Experience*/}
-         <div className="mb-6">
-            <div className="flex justify-between items-center mb-2">
-              <label className="text-lg font-semibold">Job Type</label>
-              <button className="text-green-500">-</button>
-            </div>
-            <ul>
-              <li className="flex justify-between items-center mb-2">
+    {/* Job Type Filter */}
+    <div className="mb-4 md:mb-6">
+      <div className="flex justify-between items-center mb-2">
+        <label className="text-lg font-semibold">Job Type</label>
+        <button
+          className="text-green-500"
+          onClick={() => {
+            setShowJobType(!showJobType);
+            console.log("Job Type filter toggled:", showJobType);
+          }}
+        >
+          {showJobType ? "−" : "+"}
+        </button>
+      </div>
+      {showJobType && (
+        <ul>
+          {["Fulltime", "Part time", "Fixed-Price", "Freelance"].map(
+            (type) => (
+              <li
+                key={type}
+                className="flex justify-between items-center mb-2"
+              >
                 <label className="flex items-center space-x-2">
-                  <input type="checkbox" />
-                  <span>Fresher</span>
+                  <input
+                    type="checkbox"
+                    checked={jobType.includes(type)}
+                    onChange={() => {
+                      toggleSelection(setJobType, jobType, type);
+                      console.log("Selected Job Type:", type);
+                    }}
+                  />
+                  <span>{type}</span>
                 </label>
-                <span>6</span>
               </li>
-              <li className="flex justify-between items-center mb-2">
-                <label className="flex items-center space-x-2">
-                  <input type="checkbox" />
-                  <span>Intermediate</span>
-                </label>
-                <span>4</span>
-              </li>
-              <li className="flex justify-between items-center mb-2">
-                <label className="flex items-center space-x-2">
-                  <input type="checkbox" />
-                  <span>No Experience</span>
-                </label>
-                <span>6</span>
-              </li>
-              <li className="flex justify-between items-center mb-2">
-                <label className="flex items-center space-x-2">
-                  <input type="checkbox" />
-                  <span>Internship</span>
-                </label>
-                <span>6</span>
-              </li>
-              <li className="flex justify-between items-center mb-2">
-                <label className="flex items-center space-x-2">
-                  <input type="checkbox" />
-                  <span>Expert</span>
-                </label>
-                <span>6</span>
-              </li>
-            </ul>
-          </div>
+            )
+          )}
+        </ul>
+      )}
+    </div>
 
-          {/*Salary*/}
-          <div className="border p-4 bg-green-50 rounded-lg">
-            <div className="flex justify-between items-center">
-              <h2 className="font-bold text-lg">Salary</h2>
-              <button className="text-green-600">−</button>
-            </div>
-            <div className="flex space-x-2 mt-4">
-              <input
-                type="text"
-                value="0"
-                className="w-16 border text-center rounded-lg p-1"
-                readOnly
-              />
-              <span> - </span>
-              <input
-                type="text"
-                value="3500"
-                className="w-16 border text-center rounded-lg p-1"
-                readOnly
-              />
-              <span>USD</span>
-            </div>
+    {/* Experience Filter */}
+    <div className="mb-4">
+      <div className="flex justify-between items-center mb-2">
+        <label className="text-lg font-semibold">Experience</label>
+        <button
+          className="text-green-500"
+          onClick={() => {
+            setShowExperience(!showExperience);
+            console.log("Experience filter toggled:", showExperience);
+          }}
+        >
+          {showExperience ? "−" : "+"}
+        </button>
+      </div>
+      {showExperience && (
+        <ul>
+          {[
+            "Fresher",
+            "Intermediate",
+            "No Experience",
+            "Internship",
+            "Expert",
+          ].map((exp) => (
+            <li
+              key={exp}
+              className="flex justify-between items-center mb-2"
+            >
+              <label className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  checked={experience.includes(exp)}
+                  onChange={() => {
+                    toggleSelection(setExperience, experience, exp);
+                    console.log("Selected Experience Level:", exp);
+                  }}
+                />
+                <span>{exp}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    {/* Salary Filter */}
+    <div className="mb-4">
+      <div className="flex justify-between items-center">
+        <h2 className="font-semibold text-lg">Salary</h2>
+        <button
+          className="text-green-600"
+          onClick={() => {
+            setShowSalary(!showSalary);
+            console.log("Salary filter toggled:", showSalary);
+          }}
+        >
+          {showSalary ? "−" : "+"}
+        </button>
+      </div>
+      {showSalary && (
+        <>
+          <div className="flex space-x-2 mt-4">
             <input
-              type="range"
-              className="w-full mt-4"
-              min="0"
-              max="5000"
-              step="100"
-              value="3500"
+              type="text"
+              value="0"
+              className="w-16 border text-center rounded-lg p-1"
+              readOnly
             />
-
-            <div className="flex justify-around mt-4">
-              <button className="px-4 py-1 bg-white rounded-full">
-                Weekly
-              </button>
-              <button className="px-4 py-1 bg-white rounded-full">
-                Monthly
-              </button>
-              <button className="px-4 py-1 bg-white rounded-full">
-                Hourly
-              </button>
-            </div>
+            <span> - </span>
+            <input
+              type="text"
+              value={salary}
+              className="w-16 border text-center rounded-lg p-1"
+              readOnly
+            />
+            <span>USD</span>
           </div>
-          {/*category Section*/}
-          <div className="border p-4 bg-green-50 rounded-lg">
-            <div className="flex justify-between items-center">
-              <h2 className="font-bold text-lg">Category</h2>
-              <button className="text-green-600">−</button>
-            </div>
-            <div className="mt-4 space-y-2">
-              <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="ml-2">Developer</span>
-                <span className="ml-auto text-black bg-white rounded-full">
-                  6
-                </span>
-              </label>
-              <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="ml-2">Coder</span>
-                <span className="ml-auto text-black bg-white rounded-full">
-                  2
-                </span>
-              </label>
-              <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="ml-2">Finance</span>
-                <span className="ml-auto text-black bg-white rounded-full">
-                  6
-                </span>
-              </label>
-              <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="ml-2">Accounting</span>
-                <span className="ml-auto text-black bg-white rounded-full">
-                  4
-                </span>
-              </label>
-              <label className="flex items-center">
-                <input type="checkbox" className="form-checkbox" />
-                <span className="ml-2">Design</span>
-                <span className="ml-auto text-black bg-white rounded-full">
-                  2
-                </span>
-              </label>
-            </div>
-            <button className="w-full bg-gray-600 text-white py-2 mt-4 rounded-lg hover:bg-green-400">
-              − Show More
-            </button>
-          </div>
+          <input
+            type="range"
+            className="w-full mt-4"
+            min="0"
+            max="5000"
+            step="100"
+            value={salary}
+            onChange={(e) => {
+              setSalary(e.target.value);
+              console.log("Selected Salary:", e.target.value);
+            }}
+          />
+        </>
+      )}
+    </div>
 
-          {/*Tag section*/}
-          <div className="border p-4 bg-green-50 rounded-lg">
-            <div className="flex justify-between items-center">
-              <h2 className="font-bold text-lg">Tags</h2>
-              <button className="text-green-600">−</button>
-            </div>
-            <div className="flex flex-wrap mt-4 gap-2">
-              <span className="bg-white px-3 py-1 rounded-full">java</span>
-              <span className="bg-white px-3 py-1 rounded-full">developer</span>
-              <span className="bg-white px-3 py-1 rounded-full">finance</span>
-              <span className="bg-white px-3 py-1 rounded-full">
-                accounting
-              </span>
-              <span className="bg-white py-1 rounded-full">design</span>
-              <span className="bg-white px-3 py-1 rounded-full">seo</span>
-              <span className="bg-white px-3 py-1 rounded-full">
-                javascript
-              </span>
-              <span className="bg-white px-3 py-1 rounded-full">designer</span>
-              <span className="bg-white px-3 py-1 rounded-full">web</span>
-              <span className="bg-white px-3 py-1 rounded-full">frontend</span>
-              <span className="bg-white px-3 py-1 rounded-full">data</span>
-              <span className="bg-white px-3 py-1 rounded-full">analytics</span>
-              <span className="bg-white px-3 py-1 rounded-full">ui</span>
-              <span className="bg-white px-3 py-1 rounded-full">ux</span>
-              <span className="bg-white px-3 py-1 rounded-full">marketing</span>
-              <span className="bg-white px-3 py-1 rounded-full">
-                management
-              </span>
-              <span className="bg-white px-3 py-1 rounded-full">software</span>
-              <span className="bg-white px-3 py-1 rounded-full">
-                engineering
-              </span>
-              <span className="bg-white px-3 py-1 rounded-full">writing</span>
-              <span className="bg-white px-3 py-1 rounded-full">blogging</span>
-              <span className="bg-white px-3 py-1 rounded-full">graphics </span>
-              <span className="bg-white px-3 py-1 rounded-full">
-                illustartion
-              </span>
-              <span className="bg-white px-3 py-1 rounded-full">product</span>
-            </div>
-          </div>
+    {/* Category Filter */}
+    <div className="mb-4">
+      <div className="flex justify-between items-center">
+        <h2 className="font-bold text-lg">Category</h2>
+        <button
+          className="text-green-600"
+          onClick={() => {
+            setShowCategory(!showCategory);
+            console.log("Category filter toggled:", showCategory);
+          }}
+        >
+          {showCategory ? "−" : "+"}
+        </button>
+      </div>
+      {showCategory && (
+        <ul className="mt-4 space-y-2">
+          {["Developer", "Coder", "Finance", "Accounting", "Design"].map(
+            (cat) => (
+              <li key={cat} className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={category.includes(cat)}
+                  onChange={() => {
+                    toggleSelection(setCategory, category, cat);
+                    console.log("Selected Category:", cat);
+                  }}
+                />
+                <span className="ml-2">{cat}</span>
+              </li>
+            )
+          )}
+        </ul>
+      )}
+    </div>
 
-          
-
-          {/* Reset Button */}
-          <button className="bg-[#31795A] text-white w-full mt-6 h-[45px] rounded-lg hover:bg-green-500 font-semibold">
-            Reset Filter
-          </button>
+    {/* Tags Filter */}
+    <div className="mb-4">
+      <div className="flex justify-between items-center">
+        <h2 className="font-bold text-lg">Tags</h2>
+        <button
+          className="text-green-600"
+          onClick={() => {
+            setShowTags(!showTags);
+            console.log("Tags filter toggled:", showTags);
+          }}
+        >
+          {showTags ? "−" : "+"}
+        </button>
+      </div>
+      {showTags && (
+        <div className="flex flex-wrap mt-4 gap-2 cursor-pointer">
+          {[
+            "java",
+            "developer",
+            "finance",
+            "accounting",
+            "design",
+            "seo",
+            "javascript",
+            "designer",
+            "web",
+            "frontend",
+            "data",
+            "analytics",
+            "ui",
+            "ux",
+            "marketing",
+            "management",
+            "software",
+            "engineering",
+            "writing",
+            "blogging",
+            "graphics",
+            "illustration",
+            "product",
+          ].map((tag) => (
+            <span
+              key={tag}
+              className={`px-3 py-1 rounded-full cursor-pointer ${
+                selectedTags.includes(tag)
+                  ? "bg-blue-500 text-white"
+                  : "bg-white"
+              }`}
+              onClick={() => toggleTagSelection(tag)}
+            >
+              {tag}
+            </span>
+          ))}
         </div>
+      )}
+    </div>
+  </div>
+
+  {/* Reset and Apply Buttons */}
+  <div className="flex space-x-4">
+    <button
+      className="bg-[#31795A] text-white w-full mt-6 h-[45px] rounded-lg hover:bg-green-500 font-semibold"
+      onClick={handleReset}
+    >
+      Reset Filter
+    </button>
+  </div>
+</div>
+
+
 
         {/* Right Section: Job Listings */}
         <div className="w-full md:w-2/3 px-4">
@@ -315,9 +411,7 @@ export default function Maincontent() {
                 </span>
                 <div>
                   <p className="text-green-500 font-semibold">Part time</p>
-                  <p className="text-xl font-semibold">
-                    Animator and maya 3D
-                  </p>
+                  <p className="text-xl font-semibold">Animator and maya 3D</p>
                 </div>
               </div>
               <div className="flex flex-col md:items-end mb-4 md:mb-0">
@@ -340,9 +434,7 @@ export default function Maincontent() {
                 </span>
                 <div>
                   <p className="text-green-500 font-semibold">Part time</p>
-                  <p className="text-xl font-semibold">
-                    Marketing SMM & SEO
-                  </p>
+                  <p className="text-xl font-semibold">Marketing SMM & SEO</p>
                 </div>
               </div>
               <div className="flex flex-col md:items-end mb-4 md:mb-0">
@@ -381,7 +473,6 @@ export default function Maincontent() {
                 </button>
               </div>
             </div>
-
 
             {/*Job4*/}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-white p-4 rounded-lg shadow-md">
@@ -466,9 +557,7 @@ export default function Maincontent() {
                 </span>
                 <div>
                   <p className="text-green-500 font-semibold">Fulltime</p>
-                  <p className="text-xl font-semibold">
-                    UI&UX Designer
-                  </p>
+                  <p className="text-xl font-semibold">UI&UX Designer</p>
                 </div>
               </div>
               <div className="flex flex-col md:items-end mb-4 md:mb-0">
@@ -502,8 +591,6 @@ export default function Maincontent() {
               Post a job
             </button>
           </div>
-
-        
         </div>
       </div>
     </>
