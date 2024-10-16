@@ -2,27 +2,35 @@ import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { motion } from 'framer-motion'; // Import Framer Motion
+import { useInView } from 'react-intersection-observer'; // Import Intersection Observer
 
 // Custom Left Arrow Component
 const PreviousArrow = ({ onClick }) => (
-  <button
+  <motion.button
     className="text-black"
     onClick={onClick}
     style={{ marginRight: '10px', background: 'none', border: 'none', cursor: 'pointer' }}
+    initial={{ opacity: 0, x: 50 }} // Start from right side
+    animate={{ opacity: 1, x: 0 }} // Animate to visible position
+    transition={{ duration: 0.5, delay: 1 }} // Delay for smoother appearance
   >
     <span className="text-3xl">&#8249;</span> {/* Unicode for left arrow */}
-  </button>
+  </motion.button>
 );
 
 // Custom Right Arrow Component
 const NextArrow = ({ onClick }) => (
-  <button
+  <motion.button
     className="text-black"
     onClick={onClick}
     style={{ marginLeft: '10px', background: 'none', border: 'none', cursor: 'pointer' }}
+    initial={{ opacity: 0, x: 50 }} // Start from right side
+    animate={{ opacity: 1, x: 0 }} // Animate to visible position
+    transition={{ duration: 0.5, delay: 1 }} // Delay for smoother appearance
   >
     <span className="text-3xl">&#8250;</span> {/* Unicode for right arrow */}
-  </button>
+  </motion.button>
 );
 
 const jobs = [
@@ -47,6 +55,9 @@ const jobs = [
 const Home = () => {
   const sliderRef = useRef(null); // Create a reference for the slider
 
+  // Use Intersection Observer to track visibility of the component
+  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+
   // Slider settings with custom arrows
   const settings = {
     dots: false, // We won't use dots, we'll use arrows
@@ -54,7 +65,6 @@ const Home = () => {
     speed: 500,
     slidesToShow: 4, // Show 4 slides on larger screens
     slidesToScroll: 1,
-   
     responsive: [
       {
         breakpoint: 1024, // At screen width < 1024px (tablet)
@@ -71,11 +81,35 @@ const Home = () => {
     ]
   };
 
+  // Framer Motion Variants for job cards
+  const jobVariants = {
+    hidden: { opacity: 0, x: -50 }, // Start from the left side
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: { delay: i * 0.2, duration: 0.5 }, // Stagger animation for each card
+    }),
+  };
+
+  // Variant for the "Trending Job" text
+  const trendingJobTextVariant = {
+    hidden: { opacity: 0, x: -100 }, // Start off-screen to the left
+    visible: { opacity: 1, x: 0, transition: { duration: 0.7 } } // Animate to visible position
+  };
+
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div ref={ref} className="container mx-auto px-4 py-8 w-full overflow-hidden"> {/* Prevents vertical overflow */}
       {/* Header Section with Arrows */}
       <header className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold">Trending Job</h1>
+        {/* Animate Trending Job Text */}
+        <motion.h1 
+          className="text-3xl font-bold"
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"} // Trigger animation based on visibility
+          variants={trendingJobTextVariant} // Apply the animation variant
+        >
+          Trending Job
+        </motion.h1>
         <div className="flex items-center">
           <PreviousArrow onClick={() => sliderRef.current.slickPrev()} />
           <NextArrow onClick={() => sliderRef.current.slickNext()} />
@@ -85,7 +119,14 @@ const Home = () => {
       {/* Slider Section */}
       <Slider ref={sliderRef} {...settings}>
         {jobs.map((job, index) => (
-          <div key={index} className="p-4">
+          <motion.div
+            key={index}
+            className="p-4"
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"} // Trigger animation based on visibility
+            custom={index} // Pass index to stagger animations
+            variants={jobVariants}
+          >
             <div className="relative shadow-lg rounded-lg overflow-hidden">
               {/* Image */}
               <img
@@ -99,7 +140,7 @@ const Home = () => {
                 {job.title}
               </h2>
             </div>
-          </div>
+          </motion.div>
         ))}
       </Slider>
     </div>

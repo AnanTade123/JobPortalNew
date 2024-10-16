@@ -2,7 +2,7 @@ import { FaWhatsapp, FaGoogle, FaTwitter, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#255741] text-white py-8">
+    <footer className="bg-[#255741] text-white py-8 w-full ">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10 px-4">
         {/* Logo Section */}
         <div className="mb-6 md:mb-0">
