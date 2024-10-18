@@ -123,7 +123,7 @@ function RelatedJobs() {
             {displayedJobs.map((job) => (
               <motion.div
                 key={job.id}
-                className="h-auto w-[300px] sm:w-[300px] bg-white mx-2 rounded-lg shadow-md"
+                className="h-auto w-[300px] lg:w-[400px] bg-white mx-2 rounded-lg shadow-md"
                 initial={{ opacity: 0, x: 100 }} // Start off screen right
                 animate={{ opacity: 1, x: 0 }} // Slide in from the right
                 exit={{ opacity: 0, x: -100 }} // Slide out to the left
@@ -159,7 +159,7 @@ function RelatedJobs() {
                   <p className="text-black font-semibold text-[16px] lg:text-[18px]">
                     {job.location}
                   </p>
-                  <button className="h-[27px] w-auto lg:w-[80px] rounded-3xl bg-[#31595A] text-white text-[14px] lg:text-[15px] px-4">
+                  <button className="h-[27px] w-auto lg:w-[80px] rounded-3xl bg-[#31595A] text-white text-[14px] lg:text-[15px]  px-4">
                     APPLY
                   </button>
                 </div>
