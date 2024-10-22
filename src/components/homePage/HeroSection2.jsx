@@ -5,8 +5,15 @@ const HeroSection2 = () => {
     <div className="font-sans">
       {/* Hero Section */}
       <section
-        className="relative bg-cover bg-center h-[60vh] flex items-center w-full"
-        style={{ backgroundImage: 'url(src/assets/images/img_40.332e3f70.jpg)' }} 
+        className="relative bg-cover bg-center min-h-[60vh] flex items-center w-full overflow-hidden"
+        style={{ 
+          backgroundImage: 'url(src/assets/images/img_40.332e3f70.jpg)', 
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center',
+          margin: 0, 
+          padding: 0, 
+          overflowX: 'hidden' // Prevent horizontal overflow
+        }}
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -18,23 +25,23 @@ const HeroSection2 = () => {
               Complete job portal for everyone.
             </h1>
           </div>
+
           <div className="md:w-1/2 text-white text-center lg:text-right mt-6 lg:mt-0">
-  {/* Paragraph */}
-  <p className="text-lg md:text-xl mb-4 ">
-    Find your dream job & earn from all world.
-  </p>
+            {/* Paragraph */}
+            <p className="text-lg md:text-xl mb-4">
+              Find your dream job & earn from all world.
+            </p>
 
-  {/* Buttons */}
-  <div className="flex justify-center lg:justify-end space-x-4 px-14">
-    <button className="bg-transparent border border-white text-white px-6 py-2 rounded hover:bg-[#255741]">
-      Looking for a job?
-    </button>
-    <button className="bg-green-500 text-white px-6 py-2 rounded hover:bg-[#255741]">
-      Start Hiring
-    </button>
-  </div>
-</div>
-
+            {/* Buttons */}
+            <div className="flex justify-center lg:justify-end space-x-4 px-4 lg:px-0">
+              <button className="bg-transparent border border-white text-white px-6 py-2 rounded hover:bg-[#255741]">
+                Looking for a job?
+              </button>
+              <button className="bg-green-500 text-white px-6 py-2 rounded hover:bg-[#255741]">
+                Start Hiring
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </div>
