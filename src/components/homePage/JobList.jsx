@@ -85,7 +85,7 @@ const JobList = () => {
   return (
     <div className="max-w-6xl mx-auto p-4 sm:p-8 overflow-hidden" ref={ref}>
       {/* Header section with animations */}
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-10">
+      <div className="flex flex-col text-[#255741] sm:flex-row justify-between items-center mb-10">
         {/* Animate "New job listing" text from left */}
         <motion.h2
           className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-0"
@@ -169,7 +169,7 @@ const JobList = () => {
                 />
               </svg>
               {/* Apply button */}
-              <button className="bg-green-500 hover:bg-green-600 text-white font-medium py-2 sm:py-3 px-4 sm:px-5 rounded-md">
+              <button className="bg-green-500 hover:bg-[#255741] text-white font-medium py-2 sm:py-3 px-4 sm:px-5 rounded-md">
                 Apply
               </button>
             </div>

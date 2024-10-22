@@ -26,10 +26,10 @@ const HeroSection2 = () => {
 
   {/* Buttons */}
   <div className="flex justify-center lg:justify-end space-x-4 px-14">
-    <button className="bg-transparent border border-white text-white px-6 py-2 rounded hover:bg-gray-200 hover:text-black">
+    <button className="bg-transparent border border-white text-white px-6 py-2 rounded hover:bg-[#255741]">
       Looking for a job?
     </button>
-    <button className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-400">
+    <button className="bg-green-500 text-white px-6 py-2 rounded hover:bg-[#255741]">
       Start Hiring
     </button>
   </div>

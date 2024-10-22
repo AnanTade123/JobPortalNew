@@ -21,7 +21,7 @@ function Navbar() {
         {/* Buttons */}
         <div className="hidden lg:flex space-x-4">
           <button className="border border-white px-5 py-2 rounded-full hover:bg-green-600 text-white">Login/Sign up</button>
-          <button className="bg-green-500 text-white px-5 py-2 rounded-full hover:bg-gray-600">Post a job</button>
+          <button className="bg-green-500 text-white px-5 py-2 rounded-full hover:bg-[#255741]">Post a job</button>
         </div>
 
         {/* Mobile Menu Toggle */}

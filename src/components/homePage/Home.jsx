@@ -36,26 +36,26 @@ const NextArrow = ({ onClick }) => (
 const jobs = [
   {
     title: 'Video Edition & 3D work',
-    img: 'src/assets/images/img_16.42102f6a (1).jpg', // replace with actual image path
+    img: 'src/assets/images/img_16.42102f6a (1).jpg', 
   },
   {
     title: 'Design & Development',
-    img: 'src/assets/images/img_17.31b5cbce.jpg', // replace with actual image path
+    img: 'src/assets/images/img_17.31b5cbce.jpg', 
   },
   {
     title: 'Customer Help & Sales',
-    img: 'src/assets/images/img_18.bfe28328.jpg', // replace with actual image path
+    img: 'src/assets/images/img_18.bfe28328.jpg', 
   },
   {
     title: 'Business Marketing',
-    img: 'src/assets/images/img_19.93ec8f12.jpg', // replace with actual image path
+    img: 'src/assets/images/img_19.93ec8f12.jpg', 
   },
 ];
 
 const Home = () => {
-  const sliderRef = useRef(null); // Create a reference for the slider
+  const sliderRef = useRef(null);
 
-  // Use Intersection Observer to track visibility of the component
+ 
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
 
   // Slider settings with custom arrows
@@ -100,7 +100,7 @@ const Home = () => {
   return (
     <div ref={ref} className="container mx-auto px-4 py-8 w-full overflow-hidden"> {/* Prevents vertical overflow */}
       {/* Header Section with Arrows */}
-      <header className="flex justify-between items-center mb-8">
+      <header className="flex justify-between items-center mb-8 text-[#255741]">
         {/* Animate Trending Job Text */}
         <motion.h1 
           className="text-3xl font-bold"
@@ -119,28 +119,26 @@ const Home = () => {
       {/* Slider Section */}
       <Slider ref={sliderRef} {...settings}>
         {jobs.map((job, index) => (
-          <motion.div
+          <div
             key={index}
-            className="p-4"
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"} // Trigger animation based on visibility
-            custom={index} // Pass index to stagger animations
-            variants={jobVariants}
+            className="p-4  "
+           
           >
-            <div className="relative shadow-lg rounded-lg overflow-hidden">
+            <div className="relative shadow-lg rounded-lg overflow-hidden    ">
               {/* Image */}
+              <div className=' w-full h-72 z-10 absolute bg-opacity-0 hover:bg-opacity-50 bg-black '></div>
               <img
-                className="w-full h-72 object-cover"
+                className="w-full h-72 object-cover -z-10 relative"
                 src={job.img}
                 alt={job.title}
               />
 
               {/* Title positioned at the bottom of the image */}
-              <h2 className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-lg font-bold p-2 text-center">
+              <h2 className="absolute bottom-0 left-0 w-full z-20  text-white text-lg font-bold p-2 text-center">
                 {job.title}
               </h2>
             </div>
-          </motion.div>
+          </div>
         ))}
       </Slider>
     </div>
