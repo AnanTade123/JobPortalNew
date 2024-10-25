@@ -1,12 +1,13 @@
-//import Cookies from "./components/Cookies"
 
-import CandidateDetails from "./components/candidateDetails/CandidateDetails";
+
+// import CandidateDetails from "./components/candidateDetails/CandidateDetails";
 
 // import HomePage from "./components/homePage/HomePage"
 
-//import About from "./components/About";
 
-// import JobDetails from "./components/jobDetails/JobDetails";
+// import HomePage from "./components/homePage/HomePage"
+
+
 
 //import Contactus from "./Components/Contactus"
 
@@ -17,10 +18,12 @@ import CandidateDetails from "./components/candidateDetails/CandidateDetails";
 
 //import Signin from "./components/Joblisting/Signin";
 
+
 function App() {
   return (
     <>
-      <CandidateDetails />
+
+      {/* <CandidateDetails /> */}
 
       {/* <JobDetails /> */}
 
@@ -33,6 +36,11 @@ function App() {
       {/* <Maincontent/> */}
       {/* <Signin /> */}
       {/* <Contactus/> */}
+
+      
+      {/* <HomePage/> */}
+     
+
     </>
   );
 }
