@@ -9,6 +9,7 @@ import HeroSection2 from './HeroSection2'
 import Footer from './Footer'
 
 
+
 function HomePage() {
   return (
     <>

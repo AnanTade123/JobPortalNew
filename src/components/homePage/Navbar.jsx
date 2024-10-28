@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <header className="bg-black shadow-lg w-full overflow-hidden"> {/* Removed vertical scroll */}
+    <header className="bg-black shadow-lg w-full overflow-hidden"> 
       <div className="container mx-auto flex items-center justify-between p-4 lg:px-8">
         {/* Logo */}
         <img src="src/assets/images/logo_06.webp" alt="Logo" className="h-10" />
         
-        {/* Nav Links */}
         <nav className="hidden lg:flex space-x-8 text-gray-800 font-medium">
-          <a href="#" className="hover:text-green-500 text-white">Home</a>
-          <a href="#" className="hover:text-green-500 text-white">Job</a>
-          <a href="#contact" className="hover:text-green-500 text-white">Contact</a>
-          <a href="#" className="hover:text-green-500 text-white">Dashboard</a>
-        </nav>
+        <Link to="/" className="hover:text-green-500 text-white">Home</Link>
+        <Link to="/job" className="hover:text-green-500 text-white">Job</Link>
+        <Link to="/contact" className="hover:text-green-500 text-white">Contact</Link>
+        <Link to="/" className="hover:text-green-500 text-white">Dashboard</Link>
+       </nav>
 
         {/* Buttons */}
         <div className="hidden lg:flex space-x-4">
-          <button className="border border-white px-5 py-2 rounded-full hover:bg-green-600 text-white">Login/Sign up</button>
+        <Link to="/signin"> <button className="border border-white px-5 py-2 rounded-full hover:bg-green-600 text-white">Login/Sign up</button> </Link>
           <button className="bg-green-500 text-white px-5 py-2 rounded-full hover:bg-[#255741]">Post a job</button>
         </div>
 

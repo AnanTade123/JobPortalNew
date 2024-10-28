@@ -60,10 +60,10 @@ const Home = () => {
 
   // Slider settings with custom arrows
   const settings = {
-    dots: false, // We won't use dots, we'll use arrows
+    dots: false, 
     infinite: true,
     speed: 500,
-    slidesToShow: 4, // Show 4 slides on larger screens
+    slidesToShow: 4, 
     slidesToScroll: 1,
     responsive: [
       {
@@ -126,7 +126,7 @@ const Home = () => {
           >
             <div className="relative shadow-lg rounded-lg overflow-hidden    ">
               {/* Image */}
-              <div className=' w-full h-72 z-10 absolute bg-opacity-0 hover:bg-opacity-50 bg-black '></div>
+              <div className=' w-full h-72 z-10 absolute bg-opacity-0 hover:bg-opacity-35 bg-black '></div>
               <img
                 className="w-full h-72 object-cover -z-10 relative"
                 src={job.img}

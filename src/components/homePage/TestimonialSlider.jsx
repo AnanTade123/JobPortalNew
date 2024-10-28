@@ -56,7 +56,7 @@ const TestimonialSlider = () => {
   }, []);
 
   return (
-    <div className="font-sans relative w-full" ref={ref}>
+    <div className="font-sans relative w-full mt-20" ref={ref}>
       <section
         className="h-screen w-full bg-cover bg-center"
         style={{
