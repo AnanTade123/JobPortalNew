@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { CiBookmarkMinus } from "react-icons/ci";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-// Job data with 6 cards
 const jobData = [
   {
     id: 1,
@@ -62,36 +63,79 @@ const jobData = [
 ];
 
 function RelatedJobs() {
-  const [currentIndex, setCurrentIndex] = useState(0); // Index to track the current slide
-
+  const [currentIndex, setCurrentIndex] = useState(0); // Track current slide
   const totalJobs = jobData.length;
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Function to go to the next slide
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // Animation duration in milliseconds
+      once: true, // Animation happens only once
+    });
+  }, []);
+
+  // Check if the current screen width is for mobile devices
+  useEffect(() => {
+    const checkMobileScreen = () => {
+      setIsMobile(window.innerWidth < 640); // Set isMobile if screen width is less than 640px
+    };
+
+    // Add event listener to track window resize
+    window.addEventListener("resize", checkMobileScreen);
+    checkMobileScreen(); // Run on component mount
+
+    return () => window.removeEventListener("resize", checkMobileScreen); // Clean up event listener on unmount
+  }, []);
+
+  // Helper to get the correct index with wrap-around (looping behavior)
+  const getNextIndex = (index, offset = 1) =>
+    (index + offset + totalJobs) % totalJobs;
+
+  // Animation variants for sliding
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 300 : -300, // Direction-based entry (left or right)
+      opacity: 0,
+    }),
+    center: {
+      x: 0, // Stay centered
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 300 : -300, // Direction-based exit (left or right)
+      opacity: 0,
+    }),
+  };
+
+  // Go to the next slide (shifts cards to the left)
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalJobs);
+    setCurrentIndex((prevIndex) => getNextIndex(prevIndex));
   };
 
-  // Function to go to the previous slide
+  // Go to the previous slide (shifts cards to the right)
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? totalJobs - 1 : prevIndex - 1
-    );
+    setCurrentIndex((prevIndex) => getNextIndex(prevIndex, -1));
   };
 
-  // Calculate the displayed jobs for mobile (1 card), tablet (2 cards), and desktop (3 cards)
+  // Automatically slide every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3000); // 3 seconds interval
+    return () => clearInterval(interval); // Clear interval on unmount
+  }, []);
+
+  // Get the displayed jobs for currentIndex, currentIndex + 1, currentIndex + 2
   const getDisplayedJobs = () => {
-    if (window.innerWidth < 640) {
-      return [jobData[currentIndex]]; // Show 1 job on mobile screens
-    } else if (window.innerWidth < 1024) {
-      // For tablet view, show 2 cards
-      return [jobData[currentIndex], jobData[(currentIndex + 1) % totalJobs]];
+    if (isMobile) {
+      return [jobData[currentIndex]]; // Show only 1 card on mobile devices
     } else {
-      // For desktop, show 3 cards
       return [
         jobData[currentIndex],
-        jobData[(currentIndex + 1) % totalJobs],
-        jobData[(currentIndex + 2) % totalJobs],
-      ];
+        jobData[getNextIndex(currentIndex, 1)],
+        jobData[getNextIndex(currentIndex, 2)],
+      ]; // Show 3 cards on larger screens
     }
   };
 
@@ -118,16 +162,18 @@ function RelatedJobs() {
           </div>
         </div>
 
-        <div className="overflow-hidden flex justify-center mt-10 lg:mt-20 px-5 lg:px-0">
-          <motion.div className="flex gap-5 lg:gap-10">
-            {displayedJobs.map((job) => (
+        <div className="overflow-hidden flex justify-center gap-5 mt-10 lg:mt-20 px-5 lg:px-0">
+          <AnimatePresence initial={false} mode="popLayout">
+            {displayedJobs.map((job, index) => (
               <motion.div
                 key={job.id}
                 className="h-auto w-[300px] lg:w-[400px] bg-white mx-2 rounded-lg shadow-md"
-                initial={{ opacity: 0, x: 100 }} // Start off screen right
-                animate={{ opacity: 1, x: 0 }} // Slide in from the right
-                exit={{ opacity: 0, x: -100 }} // Slide out to the left
-                transition={{ duration: 0.5 }} // Duration for sliding effect
+                custom={1}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                variants={variants}
+                transition={{ duration: 0.5 }}
               >
                 <div className="flex justify-between p-4">
                   <img
@@ -165,11 +211,14 @@ function RelatedJobs() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row items-center mt-16 lg:mt-24">
+      <div
+        className="flex flex-col lg:flex-row items-center mt-16 lg:mt-24"
+        data-aos="fade-up"
+      >
         <div className="text-center lg:text-left px-5 lg:ml-28">
           <p className="text-[35px] lg:text-[50px] font-serif">
             Most complete job portal
