@@ -13,7 +13,7 @@ function Navbar() {
         
         <nav className="hidden lg:flex space-x-8 text-gray-800 font-medium">
         <Link to="/" className="hover:text-green-500 text-white">Home</Link>
-        <Link to="/job" className="hover:text-green-500 text-white">Job</Link>
+        <Link to="/" className="hover:text-green-500 text-white">Job</Link>
         <Link to="/contact" className="hover:text-green-500 text-white">Contact</Link>
         <Link to="/" className="hover:text-green-500 text-white">Dashboard</Link>
        </nav>

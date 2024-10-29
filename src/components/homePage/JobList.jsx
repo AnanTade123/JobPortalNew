@@ -1,9 +1,9 @@
 import React from 'react';
 import { CiBookmarkMinus } from "react-icons/ci";
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom'; // Import Link for routing
 
 function JobList() {
-  // Sample data for job listings
   const jobData = [
     {
       id: 1,
@@ -75,15 +75,19 @@ function JobList() {
           New job listing
         </motion.p>
 
-        <motion.a
-          href="#"
-          className="text-green-600 hover:text-green-800 font-medium text-center sm:text-right"
+        {/* Link to JobList Route */}
+        <motion.div
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          Explore all jobs &rarr;
-        </motion.a>
+          <Link
+            to="/joblist"
+            className="text-green-600 hover:text-green-800 font-medium text-center sm:text-right"
+          >
+            Explore all jobs &rarr;
+          </Link>
+        </motion.div>
       </motion.div>
 
       {/* Job listings with bottom-to-top animation */}
@@ -120,7 +124,7 @@ function JobList() {
               <img src={job.imgSrc} alt={job.title} className='w-12 h-12 sm:w-16 sm:h-16' />
             </div>
             {/* Column 2: Job Title */} 
-            <div className='text-center  sm:text-left text-[14px] sm:text-[18px] font-medium'>
+            <div className='text-center sm:text-left text-[14px] sm:text-[18px] font-medium'>
               {job.title}
             </div>
             {/* Column 3: Job Type and Date */}
@@ -138,9 +142,12 @@ function JobList() {
               <div className='flex items-center justify-center rounded-full bg-white border border-gray-300 h-8 w-8'>
                 <CiBookmarkMinus className='h-6 w-6' />
               </div>
-              <button className="bg-green-500 hover:bg-[#255741] text-white text-[12px] sm:text-[14px] h-8 w-20 sm:w-24 rounded-3xl">
-                Apply
-              </button>
+              {/* Link to JobDetails with dynamic job id */}
+              <Link to="/jobdetails">
+                <button className="bg-green-500 hover:bg-[#255741] text-white text-[12px] sm:text-[14px] h-8 w-20 sm:w-24 rounded-3xl">
+                  Apply
+                </button>
+              </Link>
             </div>
           </motion.div>
         ))}
