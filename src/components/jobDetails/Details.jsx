@@ -61,18 +61,15 @@ function Details() {
     },
   ];
 
-  // Function to handle opening the modal
   const handleApplyNowClick = () => {
     setIsModalOpen(true);
   };
 
-  // Function to handle confirming application
   const handleConfirmApply = () => {
     setIsModalOpen(false);
     alert("You have successfully applied!"); // Replace with actual apply logic
   };
 
-  // Function to handle canceling application
   const handleCancelApply = () => {
     setIsModalOpen(false);
   };
@@ -95,12 +92,10 @@ function Details() {
             <IoLogoFacebook />
             <span>Facebook</span>
           </button>
-
           <button className="w-[120px] h-[35px] bg-[#31795A1F] flex items-center justify-center space-x-2">
             <FaTwitter />
             <span>Twitter</span>
           </button>
-
           <button className="w-[120px] h-[35px] bg-[#31795A1F] flex items-center justify-center space-x-2">
             <FaRegCopy />
             <span>Copy</span>
@@ -112,7 +107,7 @@ function Details() {
           {jobSections.map((section) => (
             <div
               key={section.id}
-              className="h-auto w-full lg:w-[820px] text-sm mt-8 p-6 lg:p-10 border border-black rounded-3xl"
+              className="mt-8 p-6 lg:p-10 border border-black rounded-3xl"
             >
               <div className="flex gap-2 items-center">
                 <div className="h-[25px] w-[25px] bg-[#31795a] rounded-full text-white flex items-center justify-center">
@@ -149,7 +144,7 @@ function Details() {
 
       {/* Right Section */}
       <div className="lg:w-1/3 w-full p-4">
-        <div className="h-auto w-full lg:w-[316px] bg-[#EFF6F3] rounded-3xl p-6">
+        <div className="bg-[#EFF6F3] rounded-3xl p-6">
           <div className="flex justify-center w-full">
             <img
               src="src/assets/images/logo.jpg"
