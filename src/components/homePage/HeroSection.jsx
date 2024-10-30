@@ -69,13 +69,11 @@ function HeroSection() {
   };
 
   return (
-    <motion.section 
+    <section 
       className="relative flex items-center justify-center w-full min-h-screen overflow-hidden"
       style={{ margin: 0, padding: 0 }}
       ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={sectionVariants}
+      
     >
       {/* Video Background */}
       <video
@@ -167,7 +165,7 @@ function HeroSection() {
           </div>
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }
 

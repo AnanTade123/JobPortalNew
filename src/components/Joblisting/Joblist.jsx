@@ -1,5 +1,5 @@
-import Header from "h:/Job Portal Project/JobPortalNew/src/components/Joblisting/Header";
-import Maincontent from "h:/Job Portal Project/JobPortalNew/src/components/Joblisting/Maincontent";
+import Header from "./Header";
+import Maincontent from "./Maincontent";
 
 
 function Joblist(){

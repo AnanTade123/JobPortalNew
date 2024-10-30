@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoLogoFacebook } from "react-icons/io5";
-import { FaTwitter, FaRegCopy, FaCheck } from "react-icons/fa";
+import { FaTwitter, FaRegCopy } from "react-icons/fa";
+import { GoDotFill } from "react-icons/go";
 
 function Details() {
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+
   const jobSections = [
     {
       id: 1,
@@ -58,8 +61,24 @@ function Details() {
     },
   ];
 
+  // Function to handle opening the modal
+  const handleApplyNowClick = () => {
+    setIsModalOpen(true);
+  };
+
+  // Function to handle confirming application
+  const handleConfirmApply = () => {
+    setIsModalOpen(false);
+    alert("You have successfully applied!"); // Replace with actual apply logic
+  };
+
+  // Function to handle canceling application
+  const handleCancelApply = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="flex flex-col  lg:flex-row mt-20 px-4 lg:px-20">
+    <div className="flex flex-col lg:flex-row mt-20 px-4 lg:px-20">
       {/* Left Section */}
       <div className="lg:w-2/3 w-full p-4">
         <div className="flex gap-1 text-[16px]">
@@ -108,7 +127,7 @@ function Details() {
                 <ul className="text-[16px] lg:text-[17px] text-[#000000B3] mt-5 list-none space-y-3">
                   {section.content.map((item, index) => (
                     <li key={index} className="flex items-center">
-                      <FaCheck className="text-green-500 mr-2" />
+                      <GoDotFill className="text-green-500 h-2.5 w-2.5 mr-2" />
                       {item}
                     </li>
                   ))}
@@ -129,7 +148,7 @@ function Details() {
       </div>
 
       {/* Right Section */}
-      <div className=" lg:w-1/3 w-full p-4">
+      <div className="lg:w-1/3 w-full p-4">
         <div className="h-auto w-full lg:w-[316px] bg-[#EFF6F3] rounded-3xl p-6">
           <div className="flex justify-center w-full">
             <img
@@ -190,12 +209,41 @@ function Details() {
           </div>
 
           <div className="flex justify-center mt-6 lg:mt-4">
-            <button className="h-[45px] w-[275px] rounded-3xl text-black font-bold bg-[#D2F34C] text-[14px] border border-transparent hover:bg-[#244034] hover:text-[#D2F34C] hover:border-[#D2F34C]">
+            <button
+              onClick={handleApplyNowClick} // Show modal on click
+              className="h-[45px] w-[275px] rounded-3xl text-black font-bold bg-[#D2F34C] text-[14px] border border-transparent hover:bg-[#244034] hover:text-[#D2F34C] hover:border-[#D2F34C]"
+            >
               Apply Now
             </button>
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-[#EFF6F3] rounded-lg shadow-lg p-6 max-w-sm w-full">
+            <h3 className="text-lg font-semibold text-center mb-4">
+              Confirmation
+            </h3>
+            <p className="text-center">Are you sure you want to apply?</p>
+            <div className="flex justify-around mt-6">
+              <button
+                onClick={handleConfirmApply}
+                className="bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600"
+              >
+                Yes
+              </button>
+              <button
+                onClick={handleCancelApply}
+                className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

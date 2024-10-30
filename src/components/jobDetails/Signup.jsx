@@ -172,7 +172,7 @@ function Signup() {
 
           <button
             type="submit"
-            className="w-full bg-[#31595A] text-lg text-white py-3 rounded-md mt-4"
+            className="w-full bg-[#31795A] text-lg text-white py-3 rounded-md mt-4"
           >
             Sign Up
           </button>
