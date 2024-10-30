@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.10",
+<<<<<<< HEAD
 
     
 
@@ -19,10 +20,15 @@
     "framer-motion": "^11.11.9",
 
 
+=======
+    "aos": "^2.3.4",
+    "framer-motion": "^11.11.9",
+>>>>>>> 6af08edf7f841fb28c0c7fe72c3792cb443777e6
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
     "react-intersection-observer": "^9.13.1",
+    "react-router-dom": "^6.27.0",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "typeface-gorditas": "^1.1.13"

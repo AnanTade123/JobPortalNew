@@ -2,7 +2,7 @@ import React from 'react';
 
 const HeroSection2 = () => {
   return (
-    <div className="font-sans">
+    <div className="font-sans ">
       {/* Hero Section */}
       <section
         className="relative bg-cover bg-center min-h-[60vh] flex items-center w-full overflow-hidden"
@@ -25,23 +25,19 @@ const HeroSection2 = () => {
               Complete job portal for everyone.
             </h1>
           </div>
-
-          <div className="md:w-1/2 text-white text-center lg:text-right mt-6 lg:mt-0">
-            {/* Paragraph */}
-            <p className="text-lg md:text-xl mb-4">
-              Find your dream job & earn from all world.
-            </p>
-
-            {/* Buttons */}
-            <div className="flex justify-center lg:justify-end space-x-4 px-4 lg:px-0">
-              <button className="bg-transparent border border-white text-white px-6 py-2 rounded hover:bg-[#255741]">
+        <div className='flex flex-col gap-5 ml-auto '>
+          <p className='text-white text-lg'>Find your dream job & earn from all world.</p>
+          <div className='flex gap-5'>
+          <button className="bg-transparent border border-white text-white px-6 py-2 rounded hover:bg-[#255741]">
                 Looking for a job?
               </button>
               <button className="bg-green-500 text-white px-6 py-2 rounded hover:bg-[#255741]">
                 Start Hiring
               </button>
-            </div>
+
           </div>
+        </div>
+         
         </div>
       </section>
     </div>
