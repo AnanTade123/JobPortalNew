@@ -5,13 +5,6 @@ import EmailForm from "./EmailForm";
 import ProfileCard from "./ProfileCard";
 
 function CandDetails() {
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  // Function to handle the play button click
-  const handlePlayClick = () => {
-    setIsPlaying(true); // Set isPlaying to true when the button is clicked
-  };
-
   const educationData = [
     {
       id: 1,
@@ -47,7 +40,7 @@ function CandDetails() {
   ];
 
   return (
-    <div className="flex mt-20">
+    <div className="flex mt-20 ">
       {/* Left Part */}
       <div className="w-2/3 flex flex-col gap-20  items-center justify-center">
         <div className="relative h-[430px] w-[850px] border border-gray-500 rounded-2xl">
@@ -177,7 +170,7 @@ function CandDetails() {
       </div>
 
       {/* Right Part */}
-      <div className="w-1/3 ">
+      <div className="w-1/3">
         <ProfileCard />
         <EmailForm />
       </div>

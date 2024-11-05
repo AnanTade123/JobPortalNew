@@ -11,9 +11,24 @@
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.10",
+<<<<<<< HEAD
+
+    
+
     "aos": "^2.3.4",
+
+    "framer-motion": "^11.11.9",
+
+
+=======
+    "aos": "^2.3.4",
+<<<<<<< HEAD
     "axios": "^1.7.7",
     "prop-types": "^15.8.1",
+=======
+    "framer-motion": "^11.11.9",
+>>>>>>> 6af08edf7f841fb28c0c7fe72c3792cb443777e6
+>>>>>>> ec0a3a7307668baadd33e7cbcb7edc491a0dd234
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",

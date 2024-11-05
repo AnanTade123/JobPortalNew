@@ -3,17 +3,30 @@ import { FaFacebook } from "react-icons/fa";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { TiSocialTwitter, TiWarning } from "react-icons/ti";
 import { IoLogoLinkedin } from "react-icons/io5";
+import Img01 from "../../assets/Images/img_01.webp";
 
 function ProfileCard() {
+  const handleDownloadClick = () => {
+    const confirmDownload = window.confirm(
+      "Are you sure you want to download the CV?"
+    );
+    if (confirmDownload) {
+      // Logic for downloading the CV can go here
+      console.log("Downloading CV...");
+    }
+  };
+
   return (
     <>
       <div className="w-[280px] h-[950px] bg-[#EFF6F3] rounded-lg">
-        <div className="flex flex-col  items-center gap-3 justify-center ">
-          <div className="h-[80px] w-[80px] bg-white rounded-full mt-10"></div>
+        <div className="flex flex-col items-center gap-3 justify-center">
+          <div className="h-[80px] w-[80px] bg-white rounded-full mt-10">
+            <img src={Img01} className="rounded-full" alt="Profile" />
+          </div>
           <p className="text-black text-[18px] font-bold">James Browser</p>
-          <p className="text-[#008FDF] text-[16px] ">Invite</p>
+          <p className="text-[#008FDF] text-[16px]">Invite</p>
         </div>
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <hr className="border-gray-300 my-5 mx-5" />
           <div className="flex flex-col gap-2 ml-5">
             <p className="text-[#24403499] text-[15px]">Location:</p>
@@ -56,22 +69,17 @@ function ProfileCard() {
           <div className="flex flex-col gap-2 ml-5">
             <p className="text-[#24403499] text-[15px]">Social:</p>
             <div className="flex gap-2">
-              <div>
-                <FaFacebook />
-              </div>
-              <div>
-                <AiOutlineInstagram />
-              </div>
-              <div>
-                <TiSocialTwitter />
-              </div>
-              <div>
-                <IoLogoLinkedin />
-              </div>
+              <FaFacebook />
+              <AiOutlineInstagram />
+              <TiSocialTwitter />
+              <IoLogoLinkedin />
             </div>
           </div>
 
-          <button className="text-white bg-[#32595A] mt-8 px-2 py-3 mx-5 my-5 rounded-lg">
+          <button
+            className="text-white bg-[#32595A] mt-8 px-2 py-3 mx-5 my-5 rounded-lg"
+            onClick={handleDownloadClick}
+          >
             Download CV
           </button>
         </div>
