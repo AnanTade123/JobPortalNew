@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import EmailForm from "./EmailForm";
 import ProfileCard from "./ProfileCard";
-
+// Testing change
 function CandDetails() {
   const educationData = [
     {
