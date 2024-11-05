@@ -1,6 +1,3 @@
-
-
-
 /* eslint-disable react/jsx-no-undef */
 //import { Routes, Route } from 'react-router-dom';
 //import Joblist from "h:/Job Portal Project/JobPortalNew/src/components/Joblisting/Joblist"
@@ -9,7 +6,6 @@
 //import Registration from "./components/Registration";
 // import CansHeader from "./components/Candidatelisting/CansHeader"
 // import Candlistmain from "./components/Candidatelisting/candlistmain";
-
 
 // import CandidateDetails from "./components/candidateDetails/CandidateDetails";
 
@@ -25,10 +21,13 @@
 // import Signup from "./components/jobDetails/Signup";
 
 //import Signin from "./components/Joblisting/Signin";
+
+// import JobDetails from "./components/jobDetails/JobDetails";
+
 // import JobDetails from "./components/jobDetails/JobDetails";
 
 // import { Routes, Route } from 'react-router-dom';
-// import HomePage from './components/homePage/HomePage'; 
+// import HomePage from './components/homePage/HomePage';
 // import JobDetails from './components/jobDetails/JobDetails';
 // import Signin from './components/Joblisting/Signin';
 // import Contactus from './components/Contactus';
@@ -36,38 +35,20 @@
 // import Cookies from './components/Cookies'
 // import Joblist from './components/Joblisting/Joblist';
 
+// import { Routes, Route } from 'react-router-dom';
+// import HomePage from './components/homePage/HomePage';
+// import JobDetails from './components/jobDetails/JobDetails';
+// import Signin from './components/Joblisting/Signin';
+// import Contactus from './components/Contactus';
+// import About from './components/About';
+// import Cookies from './components/Cookies'
+// import Joblist from './components/Joblisting/Joblist';
 
-
-function app(){
-    return(
-        <>
-          {/* <Joblist/> */}
-        {/* <Signin/> */}
-        {/* <Contactus/> */}
-         {/* <Registration/>   */}
-          {/* <CansHeader/>
-          <Candlistmain/> */}
-        </>
-    );
-
-
-//import HomePage from './components/homePage/HomePage'; 
-//import JobDetails from './components/jobDetails/JobDetails';
-//import Signin from './components/Joblisting/Signin';
-//import Contactus from './components/Contactus';
-//import About from './components/About';
-//import Cookies from './components/Cookies'
-//import Joblist from './components/Joblisting/Joblist';
-
-// eslint-disable-next-line no-unused-vars
 function App() {
   return (
     <>
-
-
-       {/* <Routes>
+      {/* <Routes>
          <Route path="/" element={<HomePage />} />  */}
-
 
       {/* <CandidateDetails /> */}
 
@@ -94,14 +75,12 @@ function App() {
         <Route path="/cookie-policy" element={<Cookies />} />
         <Route path="/joblist" element={<Joblist />} />
 
+
       </Routes>  */}
 
       {/* </Routes> */}
-
     </>
   );
- 
-}
 }
 
-export default app;
+export default App;
