@@ -1,22 +1,23 @@
 /* eslint-disable react/jsx-no-undef */
-import { Routes, Route } from 'react-router-dom';
-import Joblist from "h:/Job Portal Project/JobPortalNew/src/components/Joblisting/Joblist"
+//import { Routes, Route } from 'react-router-dom';
+//import Joblist from "h:/Job Portal Project/JobPortalNew/src/components/Joblisting/Joblist"
 //import Signin from "./components/Joblisting/Signin";
 //import Contactus from "../Contactus";
-//import Header from "./components/Candidatedetails/Header";
-//import Candmain from "./components/Candidatedetails/Candmain";
 //import Registration from "./components/Registration";
+import CansHeader from "./components/Candidatelisting/CansHeader"
+import Candlistmain from "./components/Candidatelisting/candlistmain";
+
 
 
 function app(){
     return(
         <>
-         <Joblist/> 
+          {/* <Joblist/> */}
         {/* <Signin/> */}
         {/* <Contactus/> */}
-        {/* <Header/> */}
-        {/* <Candmain/> */}
-        {/* <Registration/>  */}
+         {/* <Registration/>   */}
+          <CansHeader/>
+          <Candlistmain/>
         </>
     );
 

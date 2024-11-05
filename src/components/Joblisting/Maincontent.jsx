@@ -13,29 +13,28 @@ import img4 from "../../assets/Images/media_26.png";
 import img5 from "../../assets/Images/media_33.png";
 import img6 from "../../assets/Images/media_34.png";
 import img7 from "../../assets/Images/media_35.png";
-import img8 from "../../assets/Images/MarketingManager.png"
-import img9 from "../../assets/Images/Softwareeng.png"
-import img10 from "../../assets/Images/ContentWriter.png"
-import img11 from "../../assets/Images/GraphicsDesigner.png"
-import img12 from "../../assets/Images/Accountant.png"
-import img13 from "../../assets/Images/ProductManager.png"
-import img14 from "../../assets/Images/Datasciexp.png"
-import img15 from "../../assets/Images/Entrysoft.png"
-import img16 from "../../assets/Images/Juniorfrontdev.png"
-import img17 from "../../assets/Images/Entrylevnetwork.png"
-import img18 from "../../assets/Images/Embsofteng.png"
-import img19 from "../../assets/Images/appseceng.png"
-import img20 from "../../assets/Images/newgradsofteng.png"
-import img21 from "../../assets/Images/MLeng.png"
-import img22 from "../../assets/Images/entrysofteng.png"
-import img23 from "../../assets/Images/vpproductmanage.png"
-import img24 from "../../assets/Images/Technicalproman.png"
-import img25 from "../../assets/Images/Busaccmanag.png"
-import img26 from "../../assets/Images/Learninganddevelopment.png"
-import img27 from "../../assets/Images/ChiefHR.png"
+import img8 from "../../assets/Images/MarketingManager.png";
+import img9 from "../../assets/Images/Softwareeng.png";
+import img10 from "../../assets/Images/ContentWriter.png";
+import img11 from "../../assets/Images/GraphicsDesigner.png";
+import img12 from "../../assets/Images/Accountant.png";
+import img13 from "../../assets/Images/ProductManager.png";
+import img14 from "../../assets/Images/Datasciexp.png";
+import img15 from "../../assets/Images/Entrysoft.png";
+import img16 from "../../assets/Images/Juniorfrontdev.png";
+import img17 from "../../assets/Images/Entrylevnetwork.png";
+import img18 from "../../assets/Images/Embsofteng.png";
+import img19 from "../../assets/Images/appseceng.png";
+import img20 from "../../assets/Images/newgradsofteng.png";
+import img21 from "../../assets/Images/MLeng.png";
+import img22 from "../../assets/Images/entrysofteng.png";
+import img23 from "../../assets/Images/vpproductmanage.png";
+import img24 from "../../assets/Images/Technicalproman.png";
+import img25 from "../../assets/Images/Busaccmanag.png";
+import img26 from "../../assets/Images/Learninganddevelopment.png";
+import img27 from "../../assets/Images/ChiefHR.png";
 
 export default function Maincontent() {
-
   const jobs = [
     {
       title: "Developer in java and c++",
@@ -280,8 +279,6 @@ export default function Maincontent() {
     setCurrentPage(page);
   };
 
-
-
   useEffect(() => {
     AOS.init({ duration: 1000 }); // Initialize AOS with duration for animation
   }, []);
@@ -342,24 +339,22 @@ export default function Maincontent() {
   };
   return (
     <>
-      <div className="flex flex-col md:flex-row p-8 space-y-8 md:space-x-8 md:space-y-0">
-        {/* Left Sidebar: Filter Section */}
-        <div className="w-full md:w-1/3 lg:w-1/5 bg-green-50 p-4 md:p-6 rounded-lg lg:ml-14">
+       <div className="flex flex-col md:flex-row p-8 space-y-8 md:space-x-8 md:space-y-0 max-w-[1400px] mx-auto">
+  {/* Left Sidebar: Filter Section */}
+  <div className="w-full md:w-1/3 lg:w-1/5 bg-green-50 p-4 md:p-6 rounded-lg lg:ml-14">
+    <h3 className="text-xl md:text-2xl font-semibold mb-4">Filter By</h3>
+    
+    {/* Dropdown Button for Small and Medium Screens */}
+    <button
+      className="md:hidden bg-green-500 text-white py-2 px-4 rounded-lg mb-4 w-full text-center"
+      onClick={() => setShowFilters(!showFilters)}
+    >
+      {showFilters ? "Hide Filters" : "Show Filters"}
+    </button>
 
-          <h3 className="text-xl md:text-2xl font-semibold mb-4">Filter By</h3>
-
-          {/* Dropdown Button for Small and Medium Screens */}
-          <button
-            className="md:hidden bg-green-500 text-white py-2 px-4 rounded-lg mb-4 w-full text-center"
-            onClick={() => setShowFilters(!showFilters)}
-          >
-            {showFilters ? "Hide Filters" : "Show Filters"}
-          </button>
-
-          {/* Filter Options */}
-          <div className={`${showFilters ? "block" : "hidden"} md:block`}>
-            {/* Location Filter */}
-            <div className="mb-4 md:mb-6">
+    {/* Filter Options */}
+    <div className={`${showFilters ? "block" : "hidden"} md:block`}>
+      <div className="mb-4 md:mb-6">
               <div className="flex justify-between items-center mb-2">
                 <label className="text-lg font-semibold">Location</label>
                 <button
@@ -593,28 +588,28 @@ export default function Maincontent() {
                 </div>
               )}
             </div>
-          </div>
+    </div>
+    
+    {/* Reset and Apply Buttons */}
+    <div className="flex space-x-4">
+      <button
+        className="bg-[#31795A] text-white w-full mt-6 h-[45px] rounded-lg hover:bg-green-500 font-semibold"
+        onClick={handleReset}
+      >
+        Reset Filter
+      </button>
+      <button
+        className="bg-[#31795A] text-white w-full mt-6 h-[45px] rounded-lg hover:bg-green-500 font-semibold"
+        onClick={handleApplyFilters}
+      >
+        Apply Filters
+      </button>
+    </div>
+  </div>
 
-          {/* Reset and Apply Buttons */}
-          <div className="flex space-x-4">
-            <button
-              className="bg-[#31795A] text-white w-full mt-6 h-[45px] rounded-lg hover:bg-green-500 font-semibold"
-              onClick={handleReset}
-            >
-              Reset Filter
-            </button>
-            <button
-              className="bg-[#31795A] text-white w-full mt-6 h-[45px] rounded-lg hover:bg-green-500 font-semibold"
-              onClick={handleApplyFilters}
-            >
-              Apply Filters
-            </button>
-          </div>
-        </div>
-
-        {/* Right Section: Job Listings */}
-        <div className="w-full md:w-2/3 px-4 lg:pl-24">
-      <div className="flex flex-col md:flex-row justify-between items-center mb-6">
+  {/* Right Section: Job Listings */}
+  <div className="w-full md:w-2/3 px-4 lg:pl-24">
+    <div className="flex flex-col md:flex-row justify-between items-center mb-6">
         <p className="text-lg mb-4 md:mb-0">
           All <strong>{jobs.length}</strong> jobs found
         </p>
@@ -695,36 +690,49 @@ export default function Maincontent() {
     </div>
       </div>
 
-      <div>
-  {/* Horizontal line */}
-  <span className="block w-full border-t border-gray-600 mt-8 sm:mt-16 md:mt-28"></span>
 
-  <h1
-    className="text-3xl sm:text-4xl md:text-5xl font-serif px-4 sm:px-8 md:px-44 mt-0 sm:mt-14"
-    data-aos="fade-up"
-  >
-    Most Complete Job Portal
-  </h1>
 
-  <p className="text-lg sm:text-xl md:text-2xl text-gray-700 font-thin px-4 sm:px-8 md:px-44 mt-4">
-    Signup and start finding your job or talents
-  </p>
+      <div className="w-full">
+  {/* Horizontal line with max-width constraint */}
+  <div className="w-full max-w-screen-lg mx-auto border-t border-gray-600 mt-8 sm:mt-16 md:mt-28"></div>
 
-  <div className="flex flex-col sm:flex-row justify-center md:justify-start lg:justify-end items-center px-4 sm:px-8 md:px-44 mt-8 sm:mt-16 md:mt-12 lg:-mt-16 space-y-4 sm:space-y-0 md:space-x-6 lg:space-x-4">
-    {/* "Looking for job?" Button */}
-    <button className="w-44 h-12 border border-black text-lg rounded-lg hover:bg-[#244034] hover:text-white">
-      Looking for job?
-    </button>
+  <div className="flex justify-center">
+    <div className="w-full max-w-screen-lg px-4 sm:px-8 md:px-44">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+        <div className="mb-4 md:mb-0">
+          <h1
+            className="text-3xl sm:text-4xl md:text-5xl font-serif mt-0 sm:mt-14"
+            data-aos="fade-up"
+          >
+            Most Complete Job Portal
+          </h1>
 
-    {/* "Post a Job" Button */}
-    <button className="w-40 h-12 border border-black text-lg rounded-lg bg-[#D2F34C] hover:bg-[#244034] hover:text-white">
-      Post a Job
-    </button>
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-700 font-thin mt-4">
+            Signup and start finding your job or talents
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center mt-8 sm:mt-16 md:mt-0 space-y-4 sm:space-y-0 sm:space-x-6 lg:space-x-4">
+          {/* "Looking for job?" Button */}
+          <button className="w-44 h-12 border border-black text-lg rounded-lg hover:bg-[#244034] hover:text-white">
+            Looking for job?
+          </button>
+
+          {/* "Post a Job" Button */}
+          <button className="w-40 h-12 border border-black text-lg rounded-lg bg-[#D2F34C] hover:bg-[#244034] hover:text-white">
+            Post a Job
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  {/* Horizontal line */}
-  <span className="block w-full border-t border-gray-600 mt-8 sm:mt-16 md:mt-12"></span>
+  {/* Horizontal line with max-width constraint */}
+  <div className="w-full max-w-screen-lg mx-auto border-t border-gray-600 mt-8 sm:mt-16 md:mt-12"></div>
 </div>
+
+
+
 
     </>
   );
