@@ -75,12 +75,12 @@ function Details() {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row mt-20 px-4 lg:px-20">
+    <div className="flex flex-col lg:flex-row mt-20 px-4 lg:px-20 max-w-[1540px] mx-auto">
       {/* Left Section */}
       <div className="lg:w-2/3 w-full p-4">
         <div className="flex gap-1 text-[16px]">
-          <p className="text-[#00000080]"> 18 Jul 2024 by </p>
-          <p className="text-[#212529]"> Slack</p>
+          <p className="text-[#00000080]">18 Jul 2024 by </p>
+          <p className="text-[#212529]">Slack</p>
         </div>
 
         <p className="text-[24px] sm:text-[36px]">
@@ -205,7 +205,7 @@ function Details() {
 
           <div className="flex justify-center mt-6 lg:mt-4">
             <button
-              onClick={handleApplyNowClick} // Show modal on click
+              onClick={handleApplyNowClick}
               className="h-[45px] w-[275px] rounded-3xl text-black font-bold bg-[#D2F34C] text-[14px] border border-transparent hover:bg-[#244034] hover:text-[#D2F34C] hover:border-[#D2F34C]"
             >
               Apply Now

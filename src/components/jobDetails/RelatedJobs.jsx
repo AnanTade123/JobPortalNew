@@ -63,79 +63,70 @@ const jobData = [
 ];
 
 function RelatedJobs() {
-  const [currentIndex, setCurrentIndex] = useState(0); // Track current slide
+  const [currentIndex, setCurrentIndex] = useState(0);
   const totalJobs = jobData.length;
   const [isMobile, setIsMobile] = useState(false);
 
-  // Initialize AOS
   useEffect(() => {
     AOS.init({
-      duration: 800, // Animation duration in milliseconds
-      once: true, // Animation happens only once
+      duration: 800,
+      once: true,
     });
   }, []);
 
-  // Check if the current screen width is for mobile devices
   useEffect(() => {
     const checkMobileScreen = () => {
-      setIsMobile(window.innerWidth < 640); // Set isMobile if screen width is less than 640px
+      setIsMobile(window.innerWidth < 640);
     };
 
-    // Add event listener to track window resize
     window.addEventListener("resize", checkMobileScreen);
-    checkMobileScreen(); // Run on component mount
+    checkMobileScreen();
 
-    return () => window.removeEventListener("resize", checkMobileScreen); // Clean up event listener on unmount
+    return () => window.removeEventListener("resize", checkMobileScreen);
   }, []);
 
-  // Helper to get the correct index with wrap-around (looping behavior)
   const getNextIndex = (index, offset = 1) =>
     (index + offset + totalJobs) % totalJobs;
 
-  // Animation variants for sliding
   const variants = {
     enter: (direction) => ({
-      x: direction > 0 ? 300 : -300, // Direction-based entry (left or right)
+      x: direction > 0 ? 300 : -300,
       opacity: 0,
     }),
     center: {
-      x: 0, // Stay centered
+      x: 0,
       opacity: 1,
     },
     exit: (direction) => ({
-      x: direction < 0 ? 300 : -300, // Direction-based exit (left or right)
+      x: direction < 0 ? 300 : -300,
       opacity: 0,
     }),
   };
 
-  // Go to the next slide (shifts cards to the left)
   const handleNext = () => {
     setCurrentIndex((prevIndex) => getNextIndex(prevIndex));
   };
 
-  // Go to the previous slide (shifts cards to the right)
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => getNextIndex(prevIndex, -1));
   };
 
-  // Automatically slide every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
-    }, 3000); // 3 seconds interval
-    return () => clearInterval(interval); // Clear interval on unmount
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
-  // Get the displayed jobs for currentIndex, currentIndex + 1, currentIndex + 2
   const getDisplayedJobs = () => {
     if (isMobile) {
-      return [jobData[currentIndex]]; // Show only 1 card on mobile devices
+      return [jobData[currentIndex]];
     } else {
       return [
         jobData[currentIndex],
         jobData[getNextIndex(currentIndex, 1)],
         jobData[getNextIndex(currentIndex, 2)],
-      ]; // Show 3 cards on larger screens
+      ];
     }
   };
 
@@ -143,7 +134,7 @@ function RelatedJobs() {
 
   return (
     <>
-      <div className="h-auto bg-[#eff6f3] mt-28 pb-20">
+      <div className="h-auto bg-[#eff6f3] mt-28 pb-20 max-w-[1540px] mx-auto">
         <div className="flex flex-col lg:flex-row ml-5 lg:ml-20">
           <div className="mt-20 lg:ml-10 text-center lg:text-left">
             <h3 className="text-[30px] lg:text-[45px] text-black font-semibold">
@@ -205,7 +196,7 @@ function RelatedJobs() {
                   <p className="text-black font-semibold text-[16px] lg:text-[18px]">
                     {job.location}
                   </p>
-                  <button className="h-[27px] w-auto lg:w-[80px] rounded-3xl bg-[#31595A] text-white text-[14px] lg:text-[15px]  px-4">
+                  <button className="h-[27px] w-auto lg:w-[80px] rounded-3xl bg-[#31595A] text-white text-[14px] lg:text-[15px] px-4">
                     APPLY
                   </button>
                 </div>
@@ -216,7 +207,7 @@ function RelatedJobs() {
       </div>
 
       <div
-        className="flex flex-col lg:flex-row items-center mt-16 lg:mt-24"
+        className="flex flex-col lg:flex-row items-center mt-16 lg:mt-24 max-w-[1440px] mx-auto"
         data-aos="fade-up"
       >
         <div className="text-center lg:text-left px-5 lg:ml-28">
@@ -229,16 +220,16 @@ function RelatedJobs() {
         </div>
 
         <div className="flex gap-2 mt-6 lg:ml-auto lg:mr-28">
-          <button className="h-[45px] lg:h-[47px] w-auto lg:w-[164px] text-[#244034] text-[15px] lg:text-[17px] rounded-xl font-semibold border border-black hover:bg-[#244034] hover:text-white px-4">
+          <button className="h-[45px] lg:h-[50px] w-auto lg:w-[164px] text-[#244034] text-[15px] lg:text-[17px] rounded-xl font-semibold border border-black hover:bg-[#244034] hover:text-white px-4">
             Looking for job?
           </button>
-          <button className="bg-[#D2F34C] h-[45px] lg:h-[47px] w-auto lg:w-[150px] rounded-xl text-[#244034] text-[15px] lg:text-[17px] font-semibold hover:bg-[#244034] hover:text-white px-4">
+          <button className="bg-[#D2F34C] h-[45px] lg:h-[50px] w-auto lg:w-[150px] rounded-xl text-[#244034] text-[15px] lg:text-[17px] font-semibold hover:bg-[#244034] hover:text-white px-4">
             Post a job
           </button>
         </div>
       </div>
 
-      <div className="mt-10 lg:mt-20">
+      <div className="mt-10 lg:mt-20 max-w-[1440px] mx-auto">
         <hr className="border-t border-gray-300 my-4 mx-5 lg:mx-16" />
       </div>
     </>
