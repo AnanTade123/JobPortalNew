@@ -4,6 +4,7 @@ import EmailForm from "./EmailForm";
 import ProfileCard from "./ProfileCard";
 
 function CandDetails() {
+  //education data
   const educationData = [
     {
       id: 1,
