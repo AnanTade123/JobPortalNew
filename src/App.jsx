@@ -7,7 +7,9 @@
 // import CansHeader from "./components/Candidatelisting/CansHeader"
 // import Candlistmain from "./components/Candidatelisting/candlistmain";
 
-import CandidateDetails from "./components/candidateDetails/CandidateDetails";
+// import CandidateDetails from "./components/candidateDetails/CandidateDetails";
+
+// import CandidateDetails from "./components/candidateDetails/CandidateDetails";
 
 // import HomePage from "./components/homePage/HomePage"
 
@@ -46,7 +48,9 @@ function App() {
       {/* <Routes>
          <Route path="/" element={<HomePage />} />  */}
 
-      <CandidateDetails />
+      {/* <CandidateDetails /> */}
+
+      {/* <CandidateDetails /> */}
 
       {/* <JobDetails /> */}
 
