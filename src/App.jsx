@@ -9,7 +9,7 @@
 
 // import CandidateDetails from "./components/candidateDetails/CandidateDetails";
 
-// import HomePage from "./components/homePage/HomePage"
+// import CandidateDetails from "./components/candidateDetails/CandidateDetails";
 
 // import HomePage from "./components/homePage/HomePage"
 
@@ -21,8 +21,6 @@
 // import Signup from "./components/jobDetails/Signup";
 
 //import Signin from "./components/Joblisting/Signin";
-
-// import JobDetails from "./components/jobDetails/JobDetails";
 
 // import JobDetails from "./components/jobDetails/JobDetails";
 
@@ -49,6 +47,8 @@ function App() {
     <>
       {/* <Routes>
          <Route path="/" element={<HomePage />} />  */}
+
+      {/* <CandidateDetails /> */}
 
       {/* <CandidateDetails /> */}
 
