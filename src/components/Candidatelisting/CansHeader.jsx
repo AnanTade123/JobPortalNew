@@ -32,12 +32,12 @@ export default function Header() {
       <div className="bg-[#244034] w-full h-[280px] flex flex-col items-center justify-center">
         {/* Main Title */}
         <h1 className="text-[28px] md:text-[40px] lg:text-[58px] text-white font-semibold font-serif text-center">
-          Job Listing
+          Candidates
         </h1>
 
         {/* Subtitle */}
         <p className="text-white text-md md:text-xl lg:text-2xl text-center mt-4">
-          We delivered blazing fast & striking work solution
+          Find you desire talents & make your work done
         </p>
 
         {/* Search Box */}
