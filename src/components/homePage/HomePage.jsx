@@ -7,6 +7,7 @@ import TestimonialSlider from './TestimonialSlider'
 import CollaborationSection from './CollaborationSection'
 import HeroSection2 from './HeroSection2'
 import Footer from './Footer'
+import WhyChooseUs from './WhyChooseUs'
 
 
 
@@ -18,6 +19,7 @@ function HomePage() {
     <HeroSection/>
     <Home/>
     <JobList/>
+    <WhyChooseUs/>
     <TestimonialSlider/>
     <CollaborationSection/>
     <HeroSection2/>
